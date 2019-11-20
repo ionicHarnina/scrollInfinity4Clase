@@ -7,8 +7,16 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
-  </div>
+  <ion-list *ngFor="let item of items">
+    <ion-item *ngIf="item!='10'" >
+      <ion-label>{{item}}</ion-label>
+    </ion-item>
+  </ion-list>
+    <!-- aqui se hace la llamada cuando se produce
+    el evento de alcanzar el limite -->
+    <ion-infinite-scroll *ngIf="termina" (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="cargando mas cosas..."></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
